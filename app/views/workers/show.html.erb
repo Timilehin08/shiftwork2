@@ -1,5 +1,5 @@
 <div class="container">
- <h3>Page Showing All Your Shifts</h3>
+ <h3 class="font-weight-bold">Page Showing All Your Shifts</h3>
 
 <% @worker_shifts.each do |shift| %>
   <p>Organization Name: <%= shift.shift_org_name %></p>
@@ -10,8 +10,7 @@
   <p>Shift End: <%= shift.shift_end.httpdate %></p>
   <td>Shift Pay: <%= shift.shift_pay %></td>
   <% if current_user.worker? && Time.current < shift.shift_start %>
-   <% if @is_owner %> <p>
-      <%= link_to 'Drop Shift', drop_shift_path(shift), method: :put, data: { confirm: 'You are about to DROP this shift. Proceed?' } %>
+   <%= link_to 'Drop Shift', drop_shift_path(shift), method: :put, data: { confirm: 'You are about to DROP this shift. Proceed?' } %>
     </p>
   <% end %>
   <hr />
